@@ -40,3 +40,6 @@ gem 'jquery-rails'
 
 # Twitter bootstrap
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
+
+# Fake data
+gem 'faker'

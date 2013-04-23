@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+for i in 1..100 do
+  Post.create(:kind => Random.rand(0..1) ,:message => Faker::Lorem.words(Random.rand(4..15)).join(' ').squish)
+end
