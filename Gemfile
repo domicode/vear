@@ -22,6 +22,10 @@ group :development do
   gem 'binding_of_caller'
 end
 
+# Elasticsearch
+gem 'tire'
+gem 'tire-contrib'
+
 # Controller
 gem 'inherited_resources'
 
