@@ -1,9 +1,11 @@
-= simple_form_for(@post) do |f|
+= simple_form_for resource do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :kind
-    = f.input :message
+    #post-type.btn-group.span12{"data-toggle" => "buttons-radio"}
+      %button.btn.btn-primary.span6{:type => "button", :value => 0} Search
+      %button.btn.btn-primary.span6{:type => "button", :value => 1} Give
+    = f.input :kind, :as => :hidden
+    = f.input :message, :as => :text, :input_html => { :rows => 5, :class => 'span12' }
 
-  .form-actions
     = f.button :submit
