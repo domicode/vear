@@ -11,4 +11,12 @@ class PostsController < InheritedResources::Base
       failure.html { render action: 'index' }
     end
   end
+
+  def search
+    @post = Post.new
+
+    @posts = Post.search(params)
+
+    render :action => 'index'
+  end
 end

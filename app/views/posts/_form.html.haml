@@ -1,11 +1,24 @@
-= simple_form_for resource do |f|
-  = f.error_notification
+.row-fluid
+  .control-group
+    #post-kind.btn-group.full-width{ 'data-toggle' => 'buttons-radio' }
+      %button.btn.btn-primary.half-width{ :type => 'button', :value => 0 } Search
+      %button.btn.btn-primary.half-width{ :type => 'button', :value => 1 } Give
 
-  .form-inputs
-    #post-type.btn-group.span12{"data-toggle" => "buttons-radio"}
-      %button.btn.btn-primary.span6{:type => "button", :value => 0} Search
-      %button.btn.btn-primary.span6{:type => "button", :value => 1} Give
-    = f.input :kind, :as => :hidden
-    = f.input :message, :as => :text, :input_html => { :rows => 5, :class => 'span12' }
+.row-fluid
+  .control-group
+    %label.control-label
+      #post-message.span12
+        %textarea.span12
 
-    = f.button :submit
+  = form_tag search_posts_path, :method => 'get' do
+    = hidden_field_tag :kind
+    = hidden_field_tag :query
+    = submit_tag :search
+
+  = simple_form_for resource do |f|
+    = f.error_notification
+
+    .form-inputs
+      = f.input :kind, :as => :hidden
+      = f.input :message, :as => :hidden
+      = f.button :submit
