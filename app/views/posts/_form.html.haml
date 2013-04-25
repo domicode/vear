@@ -1,24 +1,18 @@
 .row-fluid
-  .control-group
-    #post-kind.btn-group.full-width{ 'data-toggle' => 'buttons-radio' }
-      %button.btn.btn-primary.half-width{ :type => 'button', :value => 0 } Search
-      %button.btn.btn-primary.half-width{ :type => 'button', :value => 1 } Give
-
+  .span12
+    .control-group
+      #post-button-grp.btn-group.nav-float.full-width{ 'data-toggle' => 'buttons-radio' }
+        %button#post-offer.btn.half-width{ :value => 1 }
+          Offer
+          %i.icon.icon-share
+        %button#post-demand.btn.half-width{ :value => 0 }
+          %i.icon.icon-upload
+          Demand
 .row-fluid
-  .control-group
-    %label.control-label
-      #post-message.span12
-        %textarea.span12
+  .span12
+    = simple_form_for resource, :remote => true do |f|
+      = f.error_notification
 
-  = form_tag search_posts_path, :method => 'get' do
-    = hidden_field_tag :kind
-    = hidden_field_tag :query
-    = submit_tag :search
-
-  = simple_form_for resource do |f|
-    = f.error_notification
-
-    .form-inputs
       = f.input :kind, :as => :hidden
-      = f.input :message, :as => :hidden
+      = f.input :message, :as => :text, :label => false
       = f.button :submit

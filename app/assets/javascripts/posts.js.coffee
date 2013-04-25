@@ -1,11 +1,28 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $(document).ready ->
-  $("#post-kind button").on "click", ->
-    $("#post_kind").val $(this).val()
+  $("#search-button-grp button").on "click", ->
+    # Set value of kind for search action
     $("#kind").val $(this).val()
 
-  $("#post-message textarea").on "change", ->
+    # Click opposite kind button in form when clicked in search
+    if $(this).attr('id') == 'search-demand'
+      $('#post-offer').click()
+    if $(this).attr('id') == 'search-offer'
+      $('#post-demand').click()
+
+  # Set value of kind for new post action
+  $("#post-button-grp button").on "click", ->
+    $("#post_kind").val $(this).val()
+
+  # Toggle class on new button to make form visible
+  $("#new-post").on "click", ->
+    $(".dropdown-menu").toggleClass('make-visible')
+    $("#new-post").toggleClass('active')
+    $("#new-post i")
+      .toggleClass('icon-plus')
+      .toggleClass('icon-remove')
+
+  $("#query").on "keyup", ->
     $("#post_message").val $(this).val()
-    $("#query").val $(this).val()
+
+    # Submit search on keyup
+    $(this).submit()

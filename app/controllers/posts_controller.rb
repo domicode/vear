@@ -1,4 +1,5 @@
 class PostsController < InheritedResources::Base
+  respond_to :js
   def index
     @post = Post.new
 
@@ -16,7 +17,5 @@ class PostsController < InheritedResources::Base
     @post = Post.new
 
     @posts = Post.search(params)
-
-    render :action => 'index'
   end
 end
