@@ -1,4 +1,11 @@
 $(document).ready ->
+  delay = (->
+    timer = 0
+    (callback, ms) ->
+      clearTimeout timer
+      timer = setTimeout(callback, ms)
+      )()
+
   $("#search-button-grp button").on "click", ->
     # Set value of kind for search action
     $("#kind").val $(this).val()
@@ -23,6 +30,9 @@ $(document).ready ->
 
   $("#query").on "keyup", ->
     $("#post_message").val $(this).val()
-
     # Submit search on keyup
     $(this).submit()
+    delay (->
+      highlights = $("#post_message").val().split(" ")
+      $('body > .container').highlight(highlights)
+    ), 200
