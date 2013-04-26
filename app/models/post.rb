@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   validates :kind, :presence => true, :numericality => { :only_integer => true, :less_than_or_equal_to => 1 }
   validates :message, :presence => true, :length => { :in => 10..140 }
 
+  default_scope :order => 'created_at DESC'
+
   settings :analysis => {
     :filter => {
       :substring  => {
