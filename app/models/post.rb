@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
       :substring  => {
         "type"     => "nGram",
         "min_gram" => 1,
-        "max_gram" => 20
+        "max_gram" => 140
       }
     },
     :analyzer => {
@@ -26,7 +26,10 @@ class Post < ActiveRecord::Base
       }
     }
   } do
-    mapping { indexes :message, :type => 'string', :index_analyzer => 'str_index_analyzer', :search_analyzer => 'str_search_analyzer' }
+    mapping do
+      indexes :kind
+      indexes :message, :type => 'string', :index_analyzer => 'str_index_analyzer', :search_analyzer => 'str_search_analyzer'
+    end
   end
 
   def self.search(params)
@@ -35,9 +38,9 @@ class Post < ActiveRecord::Base
 
     tire.search(:load => true) do
       query { match(:message, params[:query].squish) } if params[:query].present?
-      highlight :message
-      sort { by :_score, :desc }
       filter :term, :kind => params[:kind] if params[:kind].present?
+      sort { by :_score, :desc }
+      highlight :message
       size 100
     end
   end
