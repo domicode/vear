@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 # Application
 set :application, 'vear'
-set :repository,  'git@github.com:kitsane/vear.git'
+set :repository,  'git://github.com/kitsane/vear.git'
 
 require 'capones_recipes/cookbook/rails'
 require 'capones_recipes/tasks/database/setup'
