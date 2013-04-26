@@ -8,6 +8,9 @@ gem 'rails'
 gem 'sqlite3'
 gem 'mysql2'
 
+# Application server
+gem 'unicorn'
+
 # Assets
 group :assets do
   gem 'sass-rails'
