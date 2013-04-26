@@ -30,6 +30,10 @@ $(document).ready ->
       .toggleClass('icon-plus')
       .toggleClass('icon-remove')
 
+    # Set value to form kind button
+    if $('#post_kind').val() == ''
+      $('#post-offer').click()
+
   $("#query").on "keydown", (e) ->
     # Submit search on space or enter
     if e.keyCode == 32 || e.keyCode == 13
