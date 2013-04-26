@@ -39,6 +39,21 @@ GEM
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
+    cap-recipes (0.3.39)
+    capistrano (2.15.3)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+    capistrano-ext (1.2.1)
+      capistrano (>= 1.0.0)
+    capistrano_colors (0.5.5)
+    capones_recipes (1.18.0)
+      cap-recipes
+      capistrano
+      capistrano-ext
+      capistrano_colors
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -62,6 +77,7 @@ GEM
       railties (>= 3.1, < 4.1)
     has_scope (0.5.1)
     hashr (0.0.22)
+    highline (1.6.18)
     hike (1.2.2)
     i18n (0.6.1)
     inherited_resources (1.4.0)
@@ -79,6 +95,13 @@ GEM
     mime-types (1.23)
     multi_json (1.7.2)
     mysql2 (0.3.11)
+    net-scp (1.1.0)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.7)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -150,6 +173,7 @@ DEPENDENCIES
   anjlab-bootstrap-rails
   better_errors
   binding_of_caller
+  capones_recipes
   coffee-rails
   faker
   haml-rails

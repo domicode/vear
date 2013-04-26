@@ -20,6 +20,8 @@ group :development do
   # Better error messages
   gem 'better_errors'
   gem 'binding_of_caller'
+  # Deploy
+  gem 'capones_recipes'
 end
 
 # Elasticsearch
