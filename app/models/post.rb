@@ -34,7 +34,7 @@ class Post < ActiveRecord::Base
     params[:kind] = 0 if params[:kind] == 1
 
     tire.search(:load => true) do
-      query { text(:message, params[:query].squish) } if params[:query].present?
+      query { match(:message, params[:query].squish) } if params[:query].present?
       highlight :message
       sort { by :_score, :desc }
       filter :term, :kind => params[:kind] if params[:kind].present?
