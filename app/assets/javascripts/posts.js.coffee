@@ -1,20 +1,22 @@
 $(document).ready ->
-  delay = (->
-    timer = 0
-    (callback, ms) ->
-      clearTimeout timer
-      timer = setTimeout(callback, ms)
-      )()
-
   $("#search-button-grp button").on "click", ->
     # Set value of kind for search action
     $("#kind").val $(this).val()
 
     # Click opposite kind button in form when clicked in search
-    if $(this).attr('id') == 'search-demand'
-      $('#post-offer').click()
-    if $(this).attr('id') == 'search-offer'
-      $('#post-demand').click()
+    if !$('#new-form').hasClass('make-visible')
+      if $(this).attr('id') == 'search-demand'
+        $('#post-offer').click()
+        $('#post-button').val('Create Offer')
+      if $(this).attr('id') == 'search-offer'
+        $('#post-demand').click()
+        $('#post-button').val('Create Demand')
+
+  # Change Button text when form is visible
+  $('#post-demand').on "click", ->
+    $('#post-button').val('Create Demand')
+  $('#post-offer').on "click", ->
+    $('#post-button').val('Create Offer')
 
   # Set value of kind for new post action
   $("#post-button-grp button").on "click", ->
@@ -28,11 +30,22 @@ $(document).ready ->
       .toggleClass('icon-plus')
       .toggleClass('icon-remove')
 
-  $("#query").on "keyup", ->
-    $("#post_message").val $(this).val()
-    # Submit search on keyup
-    $(this).submit()
-    delay (->
-      highlights = $("#post_message").val().split(" ")
-      $('body > .container').highlight(highlights)
-    ), 200
+  $("#query").on "keydown", (e) ->
+    # Submit search on space or enter
+    if e.keyCode == 32 || e.keyCode == 13
+      $(this).submit()
+
+  # Counter and create button enabling
+  $('input[type=submit]#post-button').attr("disabled", "disabled")
+  $("#post_message").on "keyup", ->
+    charsentered = $("#post_message").val().length
+    charsleft = 140 - charsentered
+    if charsleft > 129
+      $('.counter p').text('Message is too short')
+      $('input[type=submit]#post-button').attr("disabled", "disabled")
+    if charsleft < 0
+      $('.counter p').text('Message is too long')
+      $('input[type=submit]#post-button').attr("disabled", "disabled")
+    else
+      $('.counter p').text(charsleft)
+      $('input[type=submit]#post-button').removeAttr("disabled")

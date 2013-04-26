@@ -1,2 +1,6 @@
 $('#posts').empty()
 $('#posts').prepend("<%= j (render collection) %>")
+
+// Add highlighting to search results
+highlights = $("#query").val().split(" ")
+$('#posts').highlight(highlights)

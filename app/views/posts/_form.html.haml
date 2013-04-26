@@ -15,4 +15,6 @@
 
       = f.input :kind, :as => :hidden
       = f.input :message, :as => :text, :label => false
-      = f.button :submit
+      .counter.pull-right
+        %p Message is too short
+      = f.button :submit, :id => "post-button"
