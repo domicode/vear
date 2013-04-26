@@ -39,6 +39,16 @@ $(document).ready ->
     if e.keyCode == 32 || e.keyCode == 13
       $(this).submit()
 
+  # Close form when post button is clicked
+  $('#post-button').on "click", ->
+    $(".dropdown-menu").toggleClass('make-visible')
+    $("#new-post").toggleClass('active')
+    $("#new-post i")
+      .toggleClass('icon-plus')
+      .toggleClass('icon-remove')
+    $("#post_message").val("")
+    $('.counter p').text('min 5 Characters')
+
   # Counter and create button enabling
   $('input[type=submit]#post-button').attr("disabled", "disabled")
   $("#post_message").on "keyup", ->
