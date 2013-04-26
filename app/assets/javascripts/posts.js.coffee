@@ -40,12 +40,13 @@ $(document).ready ->
   $("#post_message").on "keyup", ->
     charsentered = $("#post_message").val().length
     charsleft = 140 - charsentered
-    if charsleft > 129
-      $('.counter p').text('Message is too short')
-      $('input[type=submit]#post-button').attr("disabled", "disabled")
-    if charsleft < 0
-      $('.counter p').text('Message is too long')
-      $('input[type=submit]#post-button').attr("disabled", "disabled")
+    if charsleft > 135 || charsleft < 5
+      if charsleft > 135
+        $('.counter p').text('min 5 Characters')
+        $('input[type=submit]#post-button').attr("disabled", "disabled")
+      else
+        $('.counter p').text('Message is too long')
+        $('input[type=submit]#post-button').attr("disabled", "disabled")
     else
       $('.counter p').text(charsleft)
       $('input[type=submit]#post-button').removeAttr("disabled")
