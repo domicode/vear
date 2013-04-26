@@ -40,12 +40,14 @@ $(document).ready ->
       $(this).submit()
 
   # Close form when post button is clicked
-  $('#post-button').on "click", ->
+  $('#post-button').on "click", (e) ->
+    e.preventDefault()
     $(".dropdown-menu").toggleClass('make-visible')
     $("#new-post").toggleClass('active')
     $("#new-post i")
       .toggleClass('icon-plus')
       .toggleClass('icon-remove')
+    $('#post-button').submit()
     $("#post_message").val("")
     $('.counter p').text('min 5 Characters')
 
