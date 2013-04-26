@@ -60,7 +60,7 @@ module Vear
     config.active_record.whitelist_attributes = true
 
     # Change Stylesheet to sass
-    config.sass.preferred_syntax = :sass
+    config.sass.preferred_syntax = :sass if Rails.env.development?
 
     # Enable the asset pipeline
     config.assets.enabled = true
