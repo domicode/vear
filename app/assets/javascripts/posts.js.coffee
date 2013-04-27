@@ -1,68 +1,78 @@
 $(document).ready ->
-  $("#search-button-grp button").on "click", ->
-    # Set value of kind for search action
-    $("#kind").val $(this).val()
+  # Set browser url
+  if history and history.pushState
+    $ ->
+      $("body").on "click", "a", (e) ->
+        $.getScript @href
+        history.pushState null, "", @href
 
-    # Click opposite kind button in form when clicked in search
-    if !$('#new-form').hasClass('make-visible')
-      if $(this).attr('id') == 'search-demand'
+        $(window).bind "popstate", ->
+          $.getScript location.href
+
+    $("#search-button-grp button").on "click", ->
+      # Set value of kind for search action
+      $("#kind").val $(this).val()
+
+      # Click opposite kind button in form when clicked in search
+      if !$('#new-form').hasClass('make-visible')
+        if $(this).attr('id') == 'search-demand'
+          $('#post-offer').click()
+          $('#post-button').val('Create Offer')
+        if $(this).attr('id') == 'search-offer'
+          $('#post-demand').click()
+          $('#post-button').val('Create Demand')
+
+    # Change Button text when form is visible
+    $('#post-demand').on "click", ->
+      $('#post-button').val('Create Demand')
+    $('#post-offer').on "click", ->
+      $('#post-button').val('Create Offer')
+
+    # Set value of kind for new post action
+    $("#post-button-grp button").on "click", ->
+      $("#post_kind").val $(this).val()
+
+    # Toggle class on new button to make form visible
+    $("#new-post").on "click", ->
+      $(".dropdown-menu").toggleClass('make-visible')
+      $("#new-post").toggleClass('active')
+      $("#new-post i")
+        .toggleClass('icon-plus')
+        .toggleClass('icon-remove')
+
+      # Set value to form kind button
+      if $('#post_kind').val() == ''
         $('#post-offer').click()
-        $('#post-button').val('Create Offer')
-      if $(this).attr('id') == 'search-offer'
-        $('#post-demand').click()
-        $('#post-button').val('Create Demand')
 
-  # Change Button text when form is visible
-  $('#post-demand').on "click", ->
-    $('#post-button').val('Create Demand')
-  $('#post-offer').on "click", ->
-    $('#post-button').val('Create Offer')
+    $("#query").on "keydown", (e) ->
+      # Submit search on space or enter
+      if e.keyCode == 32 || e.keyCode == 13
+        $(this).submit()
 
-  # Set value of kind for new post action
-  $("#post-button-grp button").on "click", ->
-    $("#post_kind").val $(this).val()
+    # Close form when post button is clicked
+    $('#post-button').on "click", (e) ->
+      e.preventDefault()
+      $(".dropdown-menu").toggleClass('make-visible')
+      $("#new-post").toggleClass('active')
+      $("#new-post i")
+        .toggleClass('icon-plus')
+        .toggleClass('icon-remove')
+      $('#post-button').submit()
+      $("#post_message").val("")
+      $('.counter p').text('min 5 Characters')
 
-  # Toggle class on new button to make form visible
-  $("#new-post").on "click", ->
-    $(".dropdown-menu").toggleClass('make-visible')
-    $("#new-post").toggleClass('active')
-    $("#new-post i")
-      .toggleClass('icon-plus')
-      .toggleClass('icon-remove')
-
-    # Set value to form kind button
-    if $('#post_kind').val() == ''
-      $('#post-offer').click()
-
-  $("#query").on "keydown", (e) ->
-    # Submit search on space or enter
-    if e.keyCode == 32 || e.keyCode == 13
-      $(this).submit()
-
-  # Close form when post button is clicked
-  $('#post-button').on "click", (e) ->
-    e.preventDefault()
-    $(".dropdown-menu").toggleClass('make-visible')
-    $("#new-post").toggleClass('active')
-    $("#new-post i")
-      .toggleClass('icon-plus')
-      .toggleClass('icon-remove')
-    $('#post-button').submit()
-    $("#post_message").val("")
-    $('.counter p').text('min 5 Characters')
-
-  # Counter and create button enabling
-  $('input[type=submit]#post-button').attr("disabled", "disabled")
-  $("#post_message").on "keyup", ->
-    charsentered = $("#post_message").val().length
-    charsleft = 140 - charsentered
-    if charsleft > 135 || charsleft < 5
-      if charsleft > 135
-        $('.counter p').text('min 5 Characters')
-        $('input[type=submit]#post-button').attr("disabled", "disabled")
+    # Counter and create button enabling
+    $('input[type=submit]#post-button').attr("disabled", "disabled")
+    $("#post_message").on "keyup", ->
+      charsentered = $("#post_message").val().length
+      charsleft = 140 - charsentered
+      if charsleft > 135 || charsleft < 5
+        if charsleft > 135
+          $('.counter p').text('min 5 Characters')
+          $('input[type=submit]#post-button').attr("disabled", "disabled")
+        else
+          $('.counter p').text('Message is too long')
+          $('input[type=submit]#post-button').attr("disabled", "disabled")
       else
-        $('.counter p').text('Message is too long')
-        $('input[type=submit]#post-button').attr("disabled", "disabled")
-    else
-      $('.counter p').text(charsleft)
-      $('input[type=submit]#post-button').removeAttr("disabled")
+        $('.counter p').text(charsleft)
+        $('input[type=submit]#post-button').removeAttr("disabled")
