@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
 
   default_scope :order => 'created_at DESC'
 
+  paginates_per 24
   settings :analysis => {
     :filter => {
       :substring  => {
@@ -42,8 +43,10 @@ class Post < ActiveRecord::Base
       query { match(:message, params[:query].squish) } if params[:query].present?
       filter :term, :kind => params[:kind] if params[:kind].present?
       sort { by :_score, :desc }
-      highlight :message
-      size 100
+      page = (params[:page] || 1).to_i
+      search_size = 24
+      from (page -1) * search_size
+      size search_size
     end
   end
 end

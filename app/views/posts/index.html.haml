@@ -1,2 +1,5 @@
 #posts.span12
   = render collection
+
+#paginator
+  = paginate collection, :remote => true
