@@ -40,7 +40,7 @@ class Post < ActiveRecord::Base
     params[:kind] = 0 if params[:kind] == 1
 
     tire.search(:load => true) do
-      query { match(:message, params[:query].squish) } if params[:query].present?
+      query { string params[:query].squish } if params[:query].present?
       filter :term, :kind => params[:kind] if params[:kind].present?
       sort { by :_score, :desc }
       page = (params[:page] || 1).to_i
