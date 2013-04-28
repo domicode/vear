@@ -1,0 +1,12 @@
+#search-button-grp.btn-group.nav-float{ 'data-toggle' => 'buttons-radio' }
+  %button#search-offer.btn{ :value => 1 }
+    Offer
+    %i.icon.icon-share
+  %button#search-demand.btn{ :value => 0 }
+    %i.icon.icon-upload
+    Demand
+= form_tag search_posts_path, :remote => true, :method => 'get', :class => 'navbar-form nav-float' do
+  = hidden_field_tag :kind
+  = search_field_tag :query, '', :class => 'span5', :placeholder => 'Search'
+  = button_tag(:type => 'submit', :class => 'btn') do
+    %i.icon-search
