@@ -1,2 +1,7 @@
-$('#posts').html('<%= j render(collection) %>')
+$('#posts').empty()
+$('#posts').prepend("<%= j (render collection) %>")
 $('#paginator').html('<%= j (paginate(collection, :remote => true).to_s) %>')
+
+// Add highlighting to search results
+highlights = $("#query").val().split(" ")
+$('#posts').highlight(highlights)
