@@ -33,9 +33,12 @@ $(document).ready ->
     $("#post-button-grp button").on "click", ->
       $("#post_kind").val $(this).val()
 
+    # Tooltip on deactivated new button
+    $('#no-post').tooltip()
+
     # Toggle class on new button to make form visible
     $("#new-post").on "click", ->
-      $(".dropdown-menu").toggleClass('make-visible')
+      $("#new-form.dropdown-menu").toggleClass('make-visible')
       $("#new-post").toggleClass('active')
       $("#new-post i")
         .toggleClass('icon-plus')
@@ -62,6 +65,14 @@ $(document).ready ->
       $("#post_message").val("")
       $('.counter p').text('min 5 Characters')
 
+    # Toggle class on sign button to make form visible
+    $("#sign").on "click", ->
+      $("#sign-form.dropdown-menu").toggleClass('make-visible')
+      $("#sign-form").toggleClass('active')
+      $("#sign i")
+        .toggleClass('icon-user')
+        .toggleClass('icon-remove')
+
     # Counter and create button enabling
     $('input[type=submit]#post-button').attr("disabled", "disabled")
     $("#post_message").on "keyup", ->
@@ -77,3 +88,7 @@ $(document).ready ->
       else
         $('.counter p').text(charsleft)
         $('input[type=submit]#post-button').removeAttr("disabled")
+
+    # Remove flash-message when clicked on close
+    $('.flash-messages .close').on "click", ->
+      $('.flash-messages').empty($('.flash-messages'))

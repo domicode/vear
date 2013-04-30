@@ -1,0 +1,14 @@
+#flash-messages
+  - if notice.present? || alert.present?
+    .row-fluid
+      .span12
+        - if notice.present?
+          .alert.alert-info
+            %button.close{"data-dismiss" => "alert", :type => "button"}
+              &times
+            = notice
+        - if alert.present?
+          .alert
+            %button.close{"data-dismiss" => "alert", :type => "button"}
+              &times
+            = alert

@@ -1,0 +1,23 @@
+#users-form.btn-group.pull-right
+  - unless user_signed_in?
+    %button#sign.btn.dropdown-toggle{ "data-toggle" => "dropdown" }
+      %i.icon-user
+      Sign in
+    #sign-form.dropdown-menu.pull-right
+      .form-new
+        .row-fluid
+          .span12
+            = simple_form_for resource_name, :url => session_path(resource_name) do |f|
+              = f.error_notification
+              = f.input :email
+              = f.input :password
+              = f.button :submit, "Sign in", :id => "user-button"
+  - else
+    %button#sign.btn.dropdown-toggle
+      %i.icon-user
+      User settings
+    #sign-form.dropdown-menu.pull-right
+      .form-new
+        .row-fluid
+          .span12
+            = link_to 'Sign out', destroy_user_session_path, :method => :delete

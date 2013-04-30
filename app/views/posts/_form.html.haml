@@ -1,26 +1,31 @@
 .btn-group
-  %button#new-post.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-    %i.icon-plus
-    New
-  #new-form.dropdown-menu.pull-right
-    .form-new
-      .row-fluid
-        .span12
-          .control-group
-            #post-button-grp.btn-group.nav-float.full-width{ 'data-toggle' => 'buttons-radio' }
-              %button#post-offer.btn.half-width{ :value => 1 }
-                Offer
-                %i.icon.icon-share
-              %button#post-demand.btn.half-width{ :value => 0 }
-                %i.icon.icon-upload
-                Demand
-      .row-fluid
-        .span12
-          = simple_form_for resource, :remote => true do |f|
-            = f.error_notification
+  - unless user_signed_in?
+    %button#no-post.btn.disabled{ "data-toggle" => "tooltip", "data-placement" => "bottom", "data-original-title" => "Sign in to create a Post", :title => "" }
+      %i.icon-plus
+      New
+  - else
+    %button#new-post.btn.dropdown-toggle{ "data-toggle" => "dropdown", :href => "#" }
+      %i.icon-plus
+      New
+    #new-form.dropdown-menu.pull-right
+      .form-new
+        .row-fluid
+          .span12
+            .control-group
+              #post-button-grp.btn-group.nav-float.full-width{ 'data-toggle' => 'buttons-radio' }
+                %button#post-offer.btn.half-width{ :value => 1 }
+                  Offer
+                  %i.icon.icon-share
+                %button#post-demand.btn.half-width{ :value => 0 }
+                  %i.icon.icon-upload
+                  Demand
+        .row-fluid
+          .span12
+            = simple_form_for resource, :remote => true do |f|
+              = f.error_notification
 
-            = f.input :kind, :as => :hidden
-            = f.input :message, :as => :text, :label => false
-            .counter.pull-right
-              %p min 5 Characters
-            = f.button :submit, :id => "post-button"
+              = f.input :kind, :as => :hidden
+              = f.input :message, :as => :text, :label => false
+              .counter.pull-right
+                %p min 5 Characters
+              = f.button :submit, :id => "post-button"

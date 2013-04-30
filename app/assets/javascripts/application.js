@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap/button
+//= require twitter/bootstrap/tooltip
+//= require twitter/bootstrap/alert
 //= require_tree .

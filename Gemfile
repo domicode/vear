@@ -29,6 +29,9 @@ group :development do
   gem 'capones_recipes'
 end
 
+# Authentication
+gem 'devise'
+
 # Elasticsearch
 gem 'tire'
 gem 'tire-contrib'
