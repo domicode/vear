@@ -12,6 +12,7 @@ $(document).ready ->
     $("#search-button-grp button").on "click", ->
       # Set value of kind for search action
       $("#kind").val $(this).val()
+      $('#submit-search').submit()
 
       # Click opposite kind button in form when clicked in search
       if !$('#new-form').hasClass('make-visible')
