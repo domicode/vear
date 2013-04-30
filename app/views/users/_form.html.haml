@@ -2,16 +2,32 @@
   - unless user_signed_in?
     %button#sign.btn.dropdown-toggle{ "data-toggle" => "dropdown" }
       %i.icon-user
-      Sign in
+      Login / Register 
     #sign-form.dropdown-menu.pull-right
       .form-new
+        .row-fluid
+          .span12
+            .control-group
+              #sign-in-up-button-grp.btn-group.nav-float.full-width{ 'data-toggle' => 'buttons-radio' }
+                %button#sign-in.btn.half-width
+                  Login
+                %button#sign-up.btn.half-width
+                  Register
         .row-fluid
           .span12
             = simple_form_for resource_name, :url => session_path(resource_name) do |f|
               = f.error_notification
               = f.input :email
               = f.input :password
-              = f.button :submit, "Sign in", :id => "user-button"
+              = f.button :submit, "Login", :id => "user-button"
+        .row-fluid
+          .span12
+            = simple_form_for resource_name, :url => user_registration_path do |f|
+              = f.error_notification
+              = f.input :email
+              = f.input :password
+              = f.input :password_confirmation
+              = f.button :submit, "Register", :id => "user-button"
   - else
     %button#sign.btn.dropdown-toggle
       %i.icon-user
