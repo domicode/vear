@@ -7,6 +7,14 @@ Vear::Application.routes.draw do
     root :to => 'users#index'
   end
 
+  resources :users do
+    resources :posts do
+      collection do
+        get 'page/:page', :action => :index
+      end
+    end
+  end
+
   resources :posts do
     collection do
       get 'page/:page', :action => :index

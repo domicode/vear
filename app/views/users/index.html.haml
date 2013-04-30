@@ -1,1 +1,8 @@
-%p hi
+= @user.email
+
+#posts.span12
+  = render :partial => 'post', :collection => @offers
+
+.row-fluid
+  #posts.span12
+    = render :partial => 'post', :collection => @demands

@@ -4,7 +4,11 @@ class UsersController < InheritedResources::Base
   before_filter :authenticate_user!
 
   def index
-    @post = Post.new
     @user = current_user
+
+    @post = @user.posts.build
+
+    @offers = @user.posts.where("kind = ?", 1)
+    @demands = @user.posts.where("kind = ?", 0)
   end
 end
