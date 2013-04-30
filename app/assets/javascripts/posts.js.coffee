@@ -68,7 +68,7 @@ $(document).ready ->
     # Toggle class on sign button to make form visible
     $("#sign").on "click", ->
       $("#sign-form.dropdown-menu").toggleClass('make-visible')
-      $("#sign-form").toggleClass('active')
+      $("#sign").toggleClass('active')
       $("#sign i")
         .toggleClass('icon-user')
         .toggleClass('icon-remove')

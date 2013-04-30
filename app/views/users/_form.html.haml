@@ -9,7 +9,7 @@
           .span12
             .control-group
               #sign-in-up-button-grp.btn-group.nav-float.full-width{ 'data-toggle' => 'buttons-radio' }
-                %button#sign-in.btn.half-width
+                %button#sign-in.btn.half-width.active
                   Login
                 %button#sign-up.btn.half-width
                   Register
@@ -20,7 +20,6 @@
               = f.input :email
               = f.input :password
               = f.button :submit, "Login", :id => "user-button"
-        .row-fluid
           .span12
             = simple_form_for resource_name, :url => user_registration_path do |f|
               = f.error_notification
