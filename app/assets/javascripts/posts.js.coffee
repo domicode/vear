@@ -90,5 +90,5 @@ $(document).ready ->
         $('input[type=submit]#post-button').removeAttr("disabled")
 
     # Remove flash-message when clicked on close
-    $('.flash-messages .close').on "click", ->
-      $('.flash-messages').empty($('.flash-messages'))
+    $('#flash-messages .close').on "click", ->
+      $('#flash-messages').empty($('#flash-messages'))
