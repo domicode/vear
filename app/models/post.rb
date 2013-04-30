@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
-  attr_accessible :kind, :message, :created_at
+  attr_accessible :kind, :message, :created_at, :id
 
   validates :kind, :presence => true, :numericality => { :only_integer => true, :less_than_or_equal_to => 1 }
   validates :message, :presence => true, :length => { :in => 5..140 }
