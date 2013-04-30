@@ -5,7 +5,6 @@ class PostsController < InheritedResources::Base
     @post = Post.new
 
     @posts = Post.search(params)
-
   end
 
   def create

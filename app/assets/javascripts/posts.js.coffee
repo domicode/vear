@@ -2,7 +2,7 @@ $(document).ready ->
   # Set browser url
   if history and history.pushState
     $ ->
-      $("body").on "click", "a", (e) ->
+      $("body").on "click", "a", ->
         $.getScript @href
         history.pushState null, "", @href
 
@@ -48,8 +48,8 @@ $(document).ready ->
       if $('#post_kind').val() == ''
         $('#post-offer').click()
 
+    # Submit search on space or enter
     $("#query").on "keydown", (e) ->
-      # Submit search on space or enter
       if e.keyCode == 32 || e.keyCode == 13
         $(this).submit()
 
