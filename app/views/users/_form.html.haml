@@ -35,5 +35,6 @@
     %ul#sign-form.dropdown-menu.pull-right
       %li
         = link_to 'My Posts', users_path
+      %li.divider
       %li
         = link_to 'Sign out', destroy_user_session_path, :method => :delete
