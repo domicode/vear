@@ -89,6 +89,11 @@ $(document).ready ->
         $('.counter p').text(charsleft)
         $('input[type=submit]#post-button').removeAttr("disabled")
 
+    # Make Login/Register tabbable
+    $('#sign-in-up-button-grp').on "click", ->
+      $("#login-form").toggleClass('make-visible')
+      $("#register-form").toggleClass('make-visible')
+
     # Remove flash-message when clicked on close
     $('#flash-messages .close').on "click", ->
       $('#flash-messages').empty($('#flash-messages'))
