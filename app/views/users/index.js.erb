@@ -1,0 +1,7 @@
+$('#posts').empty()
+$('#posts').prepend("<%= j (render @posts) %>")
+$('#paginator').html('<%= j (paginate(@posts, :remote => true).to_s) %>')
+
+// Add highlighting to search results
+highlights = $("#query").val().split(" ")
+$('#posts').highlight(highlights)

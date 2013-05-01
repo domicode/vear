@@ -1,8 +1,7 @@
 = @user.email
 
 #posts.span12
-  = render :partial => 'post', :collection => @offers
+  = render :partial => 'post', :collection => @posts
 
-.row-fluid
-  #posts.span12
-    = render :partial => 'post', :collection => @demands
+#paginator
+  = paginate @posts, :remote => true

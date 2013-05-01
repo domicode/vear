@@ -8,18 +8,10 @@ Vear::Application.routes.draw do
   end
 
   resources :users do
-    resources :posts do
-      collection do
-        get 'page/:page', :action => :index
-      end
-    end
+    resources :posts
   end
 
-  resources :posts do
-    collection do
-      get 'page/:page', :action => :index
-    end
-  end
+  resources :posts
 
   root :to => 'posts#index'
 end

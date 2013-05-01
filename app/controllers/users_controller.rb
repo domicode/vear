@@ -5,10 +5,9 @@ class UsersController < InheritedResources::Base
 
   def index
     @user = current_user
-
     @post = @user.posts.build
 
-    @offers = @user.posts.where("kind = ?", 1)
-    @demands = @user.posts.where("kind = ?", 0)
+    params[:user_id] = current_user.id
+    @posts = @user.posts.search(params)
   end
 end

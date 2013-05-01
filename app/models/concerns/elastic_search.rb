@@ -1,33 +1,33 @@
 module Concerns::ElasticSearch
   extend ActiveSupport::Concern
+
   included do
     include Tire::Model::Search
     include Tire::Model::Callbacks
 
-    paginates_per 24
-
     settings :analysis => {
       :filter => {
-        :substring  => {
-          "type"     => "nGram",
+        :nGram  => {
           "min_gram" => 1,
-          "max_gram" => 140
+          "max_gram" => 15,
+          "type" => "nGram"
+        },
+        :word_delimiter  => {
+          "preserve_original" => true,
+          "type" => "word_delimiter"
         }
       },
       :analyzer => {
-        :str_search_analyzer => {
-          "tokenizer"    => "keyword",
-          "filter"       => "lowercase"
-        },
-        :str_index_analyzer => {
-          "tokenizer"    => "keyword",
-          "filter"       => ["lowercase", "substring"]
+        :str_analyzer => {
+          "tokenizer"    => "letter",
+          "filter"       => ["lowercase", "asciifolding", "trim", "word_delimiter", "nGram"]
         }
       }
     } do
       mapping do
-        indexes :kind
-        indexes :message, :type => 'string', :index_analyzer => 'str_index_analyzer', :search_analyzer => 'str_search_analyzer'
+        indexes :kind, :type => 'integer'
+        indexes :message, :type => 'string', :analyzer => 'str_analyzer'
+        indexes :user_id, :type => 'integer'
       end
     end
   end
@@ -40,6 +40,7 @@ module Concerns::ElasticSearch
       tire.search(:load => true) do
         query { string params[:query].squish } if params[:query].present?
         filter :term, :kind => params[:kind] if params[:kind].present?
+        filter :term, :user_id => params[:user_id] if params[:user_id].present?
         sort { by :_score, :desc }
         page = (params[:page] || 1).to_i
         search_size = 24
