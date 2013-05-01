@@ -1,10 +1,10 @@
-#search-button-grp.btn-group.nav-float{ 'data-toggle' => 'buttons-radio' }
+#search-button-grp.nav-float{ 'data-toggle' => 'buttons-radio' }
   %button#search-offer.btn{ :value => 1 }
-    Offer
-    %i.icon.icon-share
+    %i.icon.icon-gift
+  %button#search-both.btn{ :value => '' }
+    %i.icon.icon-random
   %button#search-demand.btn{ :value => 0 }
-    %i.icon.icon-upload
-    Demand
+    %i.icon.icon-shopping-cart
 = form_tag posts_path, :remote => true, :method => 'get', :class => 'navbar-form nav-float' do
   = hidden_field_tag :kind
   = search_field_tag :query, '', :class => 'span5', :placeholder => 'Search'
