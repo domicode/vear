@@ -1,5 +1,7 @@
-#posts.span12
-  = render collection
+.row-fluid
+  #posts.span12
+    = render collection
 
-#paginator
-  = paginate collection, :remote => true
+.row-fluid
+  #paginator
+    = paginate collection, :remote => true
