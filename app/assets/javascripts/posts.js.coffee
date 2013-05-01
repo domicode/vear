@@ -96,4 +96,4 @@ $(document).ready ->
 
     # Remove flash-message when clicked on close
     $('#flash-messages .close').on "click", ->
-      $('#flash-messages').empty($('#flash-messages'))
+      $('#flash-messages').remove()
