@@ -7,7 +7,7 @@ class UsersController < InheritedResources::Base
     @user = current_user
     @post = @user.posts.build
 
-    params[:user_id] = current_user.id
-    @posts = @user.posts.search(params)
+    params[:user_id] = @user.id
+    @posts = Post.search(params)
   end
 end
