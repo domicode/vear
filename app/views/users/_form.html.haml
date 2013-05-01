@@ -20,6 +20,7 @@
               = f.input :email
               = f.input :password
               = f.button :submit, "Login", :id => "user-sign-in-button"
+        .row-fluid
           #register-form.span12
             = simple_form_for resource_name, :url => user_registration_path do |f|
               = f.error_notification
@@ -31,8 +32,6 @@
     %button#sign.btn.dropdown-toggle
       %i.icon-user
       User settings
-    #sign-form.dropdown-menu.pull-right
-      .form-new
-        .row-fluid
-          .span12
-            = link_to 'Sign out', destroy_user_session_path, :method => :delete
+    %ul#sign-form.dropdown-menu.pull-right
+      %li
+        = link_to 'Sign out', destroy_user_session_path, :method => :delete
