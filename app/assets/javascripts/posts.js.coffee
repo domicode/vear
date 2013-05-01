@@ -17,6 +17,7 @@ $(document).ready ->
     # Set value of kind for search action
     $("#search-button-grp button").on "click", ->
       $("#search-kind").val $(this).val()
+      $('#user-nav').remove()
       $('#submit-search').submit()
 
       # Click opposite kind button in form when clicked in search
@@ -55,6 +56,7 @@ $(document).ready ->
 
     # Submit search on space or enter
     $("#query").on "keydown", (e) ->
+      $('#user-nav').remove()
       if e.keyCode == 32 || e.keyCode == 13
         $(this).submit()
 
