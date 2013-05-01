@@ -1,7 +1,22 @@
-= @user.email
+#user-nav.row-fluid{ 'data-toggle' => 'buttons-radio' }
+  %button#users-both.btn{ :value => '' }
+    %i.icon.icon-random
+    Your Posts
+  %button#users-offer.btn{ :value => 1 }
+    %i.icon.icon-gift
+    Your Offers
+  %button#users-demand.btn{ :value => 0 }
+    %i.icon.icon-shopping-cart
+    Your Demands
 
-#posts.span12
-  = render :partial => 'post', :collection => @posts
+  = form_tag users_path, :remote => true, :method => 'get' do
+    = hidden_field_tag :kind, '', :id => 'user-kind'
+    = button_tag('', :type => 'submit', :id => 'submit-user-posts')
 
-#paginator
-  = paginate @posts, :remote => true
+#posts.row-fluid
+  .span12
+    = render :partial => 'post', :collection => @posts
+
+#paginator.row-fluid
+  .span12
+    = paginate @posts, :remote => true

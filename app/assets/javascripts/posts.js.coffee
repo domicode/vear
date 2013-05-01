@@ -9,9 +9,14 @@ $(document).ready ->
         $(window).bind "popstate", ->
           $.getScript location.href
 
+    # Set value of kind for user search action
+    $("#user-nav button").on "click", ->
+      $("#user-kind").val $(this).val()
+      $('#submit-user-posts').submit()
+
+    # Set value of kind for search action
     $("#search-button-grp button").on "click", ->
-      # Set value of kind for search action
-      $("#kind").val $(this).val()
+      $("#search-kind").val $(this).val()
       $('#submit-search').submit()
 
       # Click opposite kind button in form when clicked in search

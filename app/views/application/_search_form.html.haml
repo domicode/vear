@@ -6,7 +6,7 @@
   %button#search-demand.btn{ :value => 0 }
     %i.icon.icon-shopping-cart
 = form_tag posts_path, :remote => true, :method => 'get', :class => 'navbar-form nav-float' do
-  = hidden_field_tag :kind
+  = hidden_field_tag :kind, '', :id => 'search-kind'
   = search_field_tag :query, '', :class => 'span5', :placeholder => 'Search'
   = button_tag(:type => 'submit', :class => 'btn', :id => 'submit-search') do
     %i.icon-search
