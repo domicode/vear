@@ -21,9 +21,9 @@
                   Demand
         .row-fluid
           .span12
-            = simple_form_for [@user, @post], :remote => true do |f|
+            = simple_form_for [@user, @post] do |f|
               = f.error_notification
-
+              = f.input :user_id, :as => :hidden, :value => "#{@user.id}"
               = f.input :kind, :as => :hidden
               = f.input :message, :as => :text, :label => false
               .counter.pull-right

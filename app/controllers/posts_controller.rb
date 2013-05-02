@@ -1,14 +1,22 @@
 class PostsController < InheritedResources::Base
-  respond_to :js
+  before_filter :load_current_user
 
   def index
+    @post = @user.posts.build if @user.present?
     @posts = Post.search(params)
   end
 
   def create
-    create! do |success, failure|
-      success.html { redirect_to root_url}
-      failure.html { render action: 'index' }
-    end
+    @post = @user.posts.create(params[:post])
+    create! { user_posts_path(@user) }
+  end
+
+  def destroy
+    @post = @user.posts.find(params[:id])
+    destroy!
+  end
+
+  def load_current_user
+    @user = current_user
   end
 end
