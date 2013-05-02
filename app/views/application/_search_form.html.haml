@@ -1,9 +1,9 @@
 #search-button-grp.nav-float{ 'data-toggle' => 'buttons-radio' }
-  %button#search-offer.btn{ :value => 1 }
+  %button#search-offer.btn{ :value => 'offer' }
     %i.icon.icon-gift
   %button#search-both.btn{ :value => '' }
     %i.icon.icon-random
-  %button#search-demand.btn{ :value => 0 }
+  %button#search-demand.btn{ :value => 'demand' }
     %i.icon.icon-shopping-cart
 = form_tag posts_path, :remote => true, :method => 'get', :class => 'navbar-form nav-float' do
   = hidden_field_tag :kind, '', :id => 'search-kind'

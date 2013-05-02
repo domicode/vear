@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430120443) do
+ActiveRecord::Schema.define(:version => 20130502062630) do
 
   create_table "posts", :force => true do |t|
-    t.integer  "kind",                      :null => false
+    t.string   "kind",                      :null => false
     t.string   "message",    :limit => 140, :null => false
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false

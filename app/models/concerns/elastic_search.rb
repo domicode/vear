@@ -25,7 +25,7 @@ module Concerns::ElasticSearch
       }
     } do
       mapping do
-        indexes :kind, :type => 'integer'
+        indexes :kind, :type => 'string'
         indexes :message, :type => 'string', :analyzer => 'str_analyzer'
         indexes :user_id, :type => 'integer'
       end
@@ -34,9 +34,6 @@ module Concerns::ElasticSearch
 
   module ClassMethods
     def search(params)
-      params[:kind] = 1 if params[:kind] == 0
-      params[:kind] = 0 if params[:kind] == 1
-
       tire.search(:load => true) do
         query { string params[:query].squish } if params[:query].present?
         filter :term, :kind => params[:kind] if params[:kind].present?

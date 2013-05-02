@@ -1,1 +1,2 @@
-= color_kind(post)
+%div{ :class => "#{post.kind}" }[post]
+  %p=post.message
