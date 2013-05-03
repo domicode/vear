@@ -1,4 +1,4 @@
 %div{ :class => "#{post.kind}" }[post]
   %p=post.message
-  - if user_signed_in? && post.user_id == @user.id
-    = link_to 'Destroy', [@user, post], :method => :delete, :data => { :confirm => 'Are you sure?' }
+  - if user_signed_in? && post.user_id == current_user.id
+    = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
