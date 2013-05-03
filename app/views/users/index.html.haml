@@ -1,0 +1,23 @@
+= form_tag users_path, :method => 'get' do
+  = hidden_field_tag :kind, '', :id => 'user-kind'
+  #user-nav.row-fluid{ 'data-toggle' => 'buttons-radio' }
+    %button#users-both.btn{ :value => '' }
+      %i.icon.icon-random
+      Your Posts
+    %button#users-offer.btn{ :value => 'offer' }
+      %i.icon.icon-gift
+      Your Offers
+    %button#users-demand.btn{ :value => 'demand' }
+      %i.icon.icon-shopping-cart
+      Your Demands
+
+    = button_tag('', :type => 'submit', :id => 'submit-user-posts') do
+      %i.icon-search
+
+.row-fluid
+  #posts.span12
+    = render @posts
+
+.row-fluid
+  #paginator
+    = paginate @posts
