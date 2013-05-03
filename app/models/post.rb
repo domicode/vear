@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
 
   attr_accessible :kind, :message, :created_at, :id, :user_id
 
-  belongs_to :user, :dependent => :destroy
+  belongs_to :user
 
   validates :kind, :presence => true
   validates_with ValidateKind
