@@ -13,5 +13,5 @@ User.create!(:email => 'simi@example.com', :password => 'blablabla', :password =
 kind = ['offer', 'demand']
 
 for i in 1..100 do
-  Post.create(:kind => kind[Random.rand(0..1)] ,:message => Faker::Lorem.words(Random.rand(4..15)).join(' ').squish, :user_id => Random.rand(1..3))
+  Post.create(:kind => kind[Random.rand(0..1)] ,:body => Faker::Lorem.words(Random.rand(4..15)).join(' ').squish, :user_id => Random.rand(1..3))
 end

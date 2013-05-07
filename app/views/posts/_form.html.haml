@@ -24,7 +24,7 @@
             = simple_form_for @post do |f|
               = f.error_notification
               = f.input :kind, :as => :hidden
-              = f.input :message, :as => :text, :label => false
+              = f.input :body, :as => :text, :label => false
               .counter.pull-right
                 %p min 5 Characters
               = f.button :submit, :id => "post-button"

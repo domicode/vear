@@ -26,7 +26,7 @@ module Concerns::ElasticSearch
     } do
       mapping do
         indexes :kind, :type => 'string'
-        indexes :message, :type => 'string', :analyzer => 'str_analyzer'
+        indexes :body, :type => 'string', :analyzer => 'str_analyzer'
         indexes :user_id, :type => 'integer'
       end
     end

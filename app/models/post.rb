@@ -10,13 +10,13 @@ class Post < ActiveRecord::Base
   include Concerns::ElasticSearch
   include ActiveModel::Validations
 
-  attr_accessible :kind, :message, :created_at, :id, :user_id
+  attr_accessible :kind, :body, :created_at, :id, :user_id
 
   belongs_to :user
 
   validates :kind, :presence => true
   validates_with ValidateKind
-  validates :message, :presence => true, :length => { :in => 5..140 }
+  validates :body, :presence => true, :length => { :in => 5..140 }
 
   default_scope :order => 'created_at DESC'
 end
