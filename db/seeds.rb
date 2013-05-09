@@ -10,8 +10,8 @@ User.create!(:email => 'andi@example.com', :password => 'blablabla', :password =
 User.create!(:email => 'domi@example.com', :password => 'blablabla', :password => 'blablabla')#.confirm!
 User.create!(:email => 'simi@example.com', :password => 'blablabla', :password => 'blablabla')#.confirm!
 
-kind = ['offer', 'demand']
+type = ['Offer', 'Demand']
 
 for i in 1..100 do
-  Post.create(:kind => kind[Random.rand(0..1)] ,:body => Faker::Lorem.words(Random.rand(4..15)).join(' ').squish, :user_id => Random.rand(1..3))
+  Post.create(:type => type[Random.rand(0..1)] ,:body => Faker::Lorem.words(Random.rand(4..15)).join(' ').squish, :user_id => Random.rand(1..3))
 end

@@ -1,7 +1,7 @@
 .row-fluid
   #posts.span12
-    = render @posts
+    = render :partial => 'post', :collection => collection
 
 .row-fluid
   #paginator
-    = paginate @posts
+    = paginate collection

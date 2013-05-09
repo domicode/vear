@@ -5,6 +5,12 @@ class UsersController < InheritedResources::Base
     @user = current_user
     @post = @user.posts.build
 
-    @posts = @user.posts.page params[:page]
+    if params[:type].present?
+      @posts = @user.posts.where(:type => params[:type]).page params[:page]
+    else
+      @posts = @user.posts.page params[:page]
+    end
+
+    render :action => 'index'
   end
 end

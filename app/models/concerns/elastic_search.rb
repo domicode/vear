@@ -25,7 +25,7 @@ module Concerns::ElasticSearch
       }
     } do
       mapping do
-        indexes :kind, :type => 'string'
+        indexes :type, :type => 'string'
         indexes :body, :type => 'string', :analyzer => 'str_analyzer'
         indexes :user_id, :type => 'integer'
       end
@@ -36,7 +36,7 @@ module Concerns::ElasticSearch
     def search(params)
       tire.search(:load => true) do
         query { string params[:query].squish } if params[:query].present?
-        filter :term, :kind => params[:kind] if params[:kind].present?
+        filter :term, :type => params[:type] if params[:type].present?
         filter :term, :user_id => params[:user_id] if params[:user_id].present?
         sort { by :_score, :desc }
         page = (params[:page] || 1).to_i

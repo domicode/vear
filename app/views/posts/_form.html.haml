@@ -13,17 +13,17 @@
           .span12
             .control-group
               #post-button-grp.btn-group.nav-float.full-width{ 'data-toggle' => 'buttons-radio' }
-                %button#post-offer.btn.half-width{ :value => 'offer' }
+                %button#post-offer.btn.half-width{ :value => 'Offer' }
                   Offer
                   %i.icon.icon-share
-                %button#post-demand.btn.half-width{ :value => 'demand' }
+                %button#post-demand.btn.half-width{ :value => 'Demand' }
                   %i.icon.icon-upload
                   Demand
         .row-fluid
           .span12
             = simple_form_for @post do |f|
               = f.error_notification
-              = f.input :kind, :as => :hidden
+              = f.input :type, :as => :hidden
               = f.input :body, :as => :text, :label => false
               .counter.pull-right
                 %p min 5 Characters
