@@ -7,8 +7,6 @@ class ValidateKind < ActiveModel::Validator
 end
 
 class Post < ActiveRecord::Base
-  include Concerns::ElasticSearch
-  include ActiveModel::Validations
 
   attr_accessible :kind, :body, :created_at, :id, :user_id
 

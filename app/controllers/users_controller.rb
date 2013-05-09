@@ -5,7 +5,6 @@ class UsersController < InheritedResources::Base
     @user = current_user
     @post = @user.posts.build
 
-    params[:user_id] = @user.id
-    @posts = Post.search(params)
+    @posts = @user.posts.page params[:page]
   end
 end
