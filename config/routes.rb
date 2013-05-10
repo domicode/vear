@@ -1,6 +1,8 @@
 Vear::Application.routes.draw do
   devise_for :users
 
+  get :search, :controller => 'search'
+
   resources :users
 
   resources :posts

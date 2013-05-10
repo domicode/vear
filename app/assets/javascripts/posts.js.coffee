@@ -1,14 +1,14 @@
 $(document).ready ->
-  # Set value of kind for user search action
+  # Set value of type for user search action
   $("#user-nav button").on "click", ->
-    $("#user-kind").val $(this).val()
+    $("#user-type").val $(this).val()
     $('#submit-user-posts').submit()
 
-  # Set value of kind for search action
+  # Set value of type for search action
   $("#search-button-grp button").on "click", ->
-    $("#search-kind").val $(this).val()
+    $("#search-type").val $(this).val()
 
-    # Click opposite kind button in form when clicked in search
+    # Click opposite type button in form when clicked in search
     if !$('#new-form').hasClass('make-visible')
       if $(this).attr('id') == 'search-demand'
         $('#post-offer').click()
@@ -23,9 +23,9 @@ $(document).ready ->
   $('#post-offer').on "click", ->
     $('#post-button').val('Create Offer')
 
-  # Set value of kind for new post action
+  # Set value of type for new post action
   $("#post-button-grp button").on "click", ->
-    $("#post_kind").val $(this).val()
+    $("#post_type").val $(this).val()
 
   # Tooltip on deactivated new button
   $('#no-post').tooltip()
@@ -38,8 +38,8 @@ $(document).ready ->
       .toggleClass('icon-plus')
       .toggleClass('icon-remove')
 
-    # Set value to form kind button
-    if $('#post_kind').val() == ''
+    # Set value to form type button
+    if $('#post_type').val() == ''
       $('#post-offer').click()
 
   # Toggle class on sign button to make form visible
