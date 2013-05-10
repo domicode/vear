@@ -1,4 +1,6 @@
 class PostsController < InheritedResources::Base
+  before_filter :authenticat_user!, :except => :index
+
   def index
     if current_user.present?
       @user = current_user
