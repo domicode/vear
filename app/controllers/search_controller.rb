@@ -10,7 +10,7 @@ class SearchController < ApplicationController
       @posts = Post.search(params)
       render 'index', :collection => @posts
     else
-      redirect_to root_url
+      redirect_to posts_path
     end
   end
 end
