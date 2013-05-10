@@ -1,0 +1,10 @@
+= render 'users/user_navigation'
+- @posts.each do |post|
+  .row-fluid
+    .span3
+      = render post
+    .span9
+      %table.table.table-striped
+        = render post.messages
+
+  %hr

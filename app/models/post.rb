@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   attr_accessible :type, :body, :created_at, :id, :user_id
 
   belongs_to :user
+  has_many :messages
 
   validates :type, :presence => true
   validates :body, :presence => true, :length => { :in => 5..140 }

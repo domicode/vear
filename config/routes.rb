@@ -9,6 +9,8 @@ Vear::Application.routes.draw do
   resources :offers, :controller => 'posts', :type => 'Offer'
   resources :demands, :controller => 'posts', :type => 'Demand'
 
+  resources :messages
+
   authenticated :user do
     root :to => 'posts#index'
   end
