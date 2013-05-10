@@ -10,5 +10,6 @@ class UsersController < InheritedResources::Base
     else
       @posts = @user.posts.page params[:page]
     end
+    index! { root_url }
   end
 end
