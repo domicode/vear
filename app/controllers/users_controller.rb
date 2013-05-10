@@ -10,7 +10,5 @@ class UsersController < InheritedResources::Base
     else
       @posts = @user.posts.page params[:page]
     end
-
-    render :action => 'index'
   end
 end

@@ -8,7 +8,7 @@ class SearchController < ApplicationController
 
     if params[:query].present?
       @posts = Post.search(params)
-      render :action => 'index', :collection => @posts
+      render 'index', :collection => @posts
     else
       redirect_to root_url
     end

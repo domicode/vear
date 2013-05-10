@@ -23,6 +23,7 @@
           .span12
             = simple_form_for @post do |f|
               = f.error_notification
+              = f.input :user_id, :as => :hidden
               = f.input :type, :as => :hidden
               = f.input :body, :as => :text, :label => false
               .counter.pull-right

@@ -52,8 +52,8 @@ $(document).ready ->
 
   # Counter and create button enabling
   $('input[type=submit]#post-button').attr("disabled", "disabled")
-  $("#post_message").on "keyup", ->
-    charsentered = $("#post_message").val().length
+  $("#post_body").on "keyup", ->
+    charsentered = $("#post_body").val().length
     charsleft = 140 - charsentered
     if charsleft > 135 || charsleft < 5
       if charsleft > 135
