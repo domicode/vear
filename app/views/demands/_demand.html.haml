@@ -1,0 +1,4 @@
+.demand[demand]
+  %p= demand.body
+  - if user_signed_in? && demand.user_id == current_user.id
+    = link_to 'Destroy', demand, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,0 +1,4 @@
+.offer[offer]
+  %p= offer.body
+  - if user_signed_in? && offer.user_id == current_user.id
+    = link_to 'Destroy', offer, :method => :delete, :data => { :confirm => 'Are you sure?' }
