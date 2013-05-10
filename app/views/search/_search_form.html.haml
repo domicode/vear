@@ -8,6 +8,6 @@
 
 = form_tag search_path, :method => 'get', :class => 'navbar-form nav-float' do
   = hidden_field_tag :type, '', :value => params[:type]
-  = search_field_tag :query, '', :class => 'span5', :placeholder => 'Search'
+  = search_field_tag :query, '', :value => params[:query], :class => 'span5', :placeholder => 'Search'
   = button_tag(:type => 'submit', :class => 'btn', :id => 'submit-search') do
     %i.icon-search
