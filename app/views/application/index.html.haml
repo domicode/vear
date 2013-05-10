@@ -1,7 +1,9 @@
+- if user_signed_in?
+  = render 'users/user_navigation'
 .row-fluid
   #posts.span12
-    = render collection
+    = render @posts
 
 .row-fluid
   #paginator
-    = paginate collection
+    = paginate @posts
