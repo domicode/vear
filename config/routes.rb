@@ -10,7 +10,7 @@ Vear::Application.routes.draw do
   resources :demands, :controller => 'posts', :type => 'Demand'
 
   authenticated :user do
-    root :to => 'users#index'
+    root :to => 'posts#index'
   end
 
   root :to => 'posts#index'
