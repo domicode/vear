@@ -5,6 +5,8 @@ module Concerns::ElasticSearch
     include Tire::Model::Search
     include Tire::Model::Callbacks
 
+    after_destroy :update_index
+
     settings :analysis => {
       :filter => {
         :word_delimiter  => {
@@ -24,6 +26,10 @@ module Concerns::ElasticSearch
         indexes :body, :type => 'string', :analyzer => 'str_analyzer'
         indexes :user_id, :type => 'integer'
       end
+    end
+
+    def update_index
+      tire.update_index
     end
   end
 
