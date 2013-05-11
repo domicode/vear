@@ -1,4 +1,4 @@
-.post[post]
+.post{ :class => "#{post.kind.downcase}" }[post]
   %p= post.body
   - if user_signed_in? && post.user_id == current_user.id
     = link_to 'New Message', new_message_path(:post_id => post.id)

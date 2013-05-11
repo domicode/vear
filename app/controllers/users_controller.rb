@@ -5,8 +5,8 @@ class UsersController < InheritedResources::Base
     @user = current_user
     @post = @user.posts.build
 
-    if params[:type].present?
-      @posts = @user.posts.where(:type => params[:type]).page params[:page]
+    if params[:kind].present?
+      @posts = @user.posts.where(:kind => params[:kind]).page params[:page]
     else
       @posts = @user.posts.page params[:page]
     end

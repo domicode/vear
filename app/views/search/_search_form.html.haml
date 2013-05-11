@@ -1,13 +1,13 @@
 .nav-float
-  = link_to offers_path(:type => 'Offer'), :class => 'btn' do
+  = link_to posts_path(:kind => 'Offer'), :class => 'btn' do
     %i.icon.icon-gift
   = link_to posts_path, :class => 'btn' do
     %i.icon.icon-star
-  = link_to demands_path(:type => 'Demand'), :class => 'btn' do
+  = link_to posts_path(:kind => 'Demand'), :class => 'btn' do
     %i.icon.icon-shopping-cart
 
 = form_tag search_path, :method => 'get', :class => 'navbar-form nav-float' do
-  = hidden_field_tag :type, '', :value => params[:type]
+  = hidden_field_tag :kind, '', :value => params[:kind]
   = search_field_tag :query, '', :value => params[:query], :class => 'span5', :placeholder => 'Search'
   = button_tag(:type => 'submit', :class => 'btn', :id => 'submit-search') do
     %i.icon-search

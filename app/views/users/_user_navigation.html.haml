@@ -2,5 +2,5 @@
   #user-navigation.span12
     = link_to 'Your Messages', messages_path, :class => 'btn'
     = link_to 'Your Posts', users_path, :class => 'btn'
-    = link_to 'Your Offers', users_path(:type => 'Offer'), :class => 'btn'
-    = link_to 'Your Demands', users_path(:type => 'Demand'),:class => 'btn'
+    = link_to 'Your Offers', users_path(:kind => 'Offer'), :class => 'btn'
+    = link_to 'Your Demands', users_path(:kind => 'Demand'),:class => 'btn'

@@ -7,8 +7,8 @@ class PostsController < InheritedResources::Base
       @post = @user.posts.build
     end
 
-    if params[:type].present?
-      @posts = Post.where(:type => params[:type]).page params[:page]
+    if params[:kind].present?
+      @posts = Post.where(:kind => params[:kind]).page params[:page]
     else
       @posts = Post.page params[:page]
     end

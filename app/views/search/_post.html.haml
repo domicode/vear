@@ -1,2 +1,2 @@
-.post{ :class => "#{post.post_type.downcase}" }[post]
+.post{ :class => "#{post.kind.downcase}" }[post]
   %p= post.highlight.body.join(' ').html_safe
