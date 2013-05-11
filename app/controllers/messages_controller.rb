@@ -3,10 +3,11 @@ class MessagesController < InheritedResources::Base
 
   def new
     @post = Post.find(params[:post_id])
-    @message = @post.messages.build
+    @message = @post.messages.build(:user_id => current_user.id)
   end
 
   def create
+    @message = @post.messages.build(:user_id => current_user.id)
     create! { messages_path }
   end
 
