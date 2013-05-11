@@ -1,0 +1,7 @@
+.row-fluid
+  .span3
+    = render :partial => 'posts/post', :object => post_messages
+  .span9
+    %table.table
+      = render post_messages.messages
+%hr

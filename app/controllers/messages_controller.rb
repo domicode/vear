@@ -12,7 +12,7 @@ class MessagesController < InheritedResources::Base
   end
 
   def index
-    @posts = Post.joins(:user, :messages).uniq
+    @posts = Post.joins(:messages).uniq
   end
 
   def build_new_post

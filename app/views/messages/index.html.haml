@@ -1,10 +1,5 @@
-= render 'users/user_navigation'
-- @posts.each do |post|
-  .row-fluid
-    .span3
-      = render :partial => 'posts/post', :object => post
-    .span9
-      %table.table.table-striped
-        = render post.messages
+.row-fluid
+  .span12
+    = render 'users/user_navigation'
 
-  %hr
+= render :partial => 'messages/post_messages', :collection => @posts
