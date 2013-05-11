@@ -2,7 +2,7 @@
   = render 'users/user_navigation'
 .row-fluid
   #posts.span12
-    = render @posts
+    = render :partial => 'posts/post', :collection => @posts
 
 .row-fluid
   #paginator
