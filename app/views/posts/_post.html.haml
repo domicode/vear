@@ -1,5 +1,5 @@
 .post{ :class => "#{post.kind.downcase}" }[post]
   %p= post.body
   - if user_signed_in? && post.user_id == current_user.id
-    = link_to 'New Message', new_message_path(:post_id => post.id)
+    = link_to 'New Message', new_post_message_path(post)
     = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,8 +1,7 @@
-= simple_form_for(@message) do |f|
+= simple_form_for([@message.post, @message]) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :post_id, :as => :hidden
     = f.input :body
 
   .form-actions

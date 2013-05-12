@@ -5,9 +5,9 @@ Vear::Application.routes.draw do
 
   resources :users
 
-  resources :posts
-
-  resources :messages
+  resources :posts do
+    resources :messages
+  end
 
   authenticated :user do
     root :to => 'posts#index'
