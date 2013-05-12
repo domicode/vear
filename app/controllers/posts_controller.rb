@@ -4,7 +4,7 @@ class PostsController < InheritedResources::Base
   def index
     if current_user.present?
       @user = current_user
-      @post = @user.posts.build
+      @post_new = @user.posts.build
     end
 
     if params[:kind].present?

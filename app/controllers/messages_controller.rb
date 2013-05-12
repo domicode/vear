@@ -25,7 +25,7 @@ class MessagesController < InheritedResources::Base
   def build_new_post
     if current_user.present?
       @user = current_user
-      @post = @user.posts.build
+      @post_new = @user.posts.build
     end
   end
 end
