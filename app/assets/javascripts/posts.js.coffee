@@ -25,7 +25,7 @@ $(document).ready ->
 
   # Set value of type for new post action
   $("#post-button-grp button").on "click", ->
-    $("#post_type").val $(this).val()
+    $("#post_kind").val $(this).val()
 
   # Tooltip on deactivated new button
   $('#no-post').tooltip()
