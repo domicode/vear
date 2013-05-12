@@ -1,8 +1,4 @@
 = simple_form_for([@message.post, @message]) do |f|
   = f.error_notification
-
-  .form-inputs
-    = f.input :body
-
-  .form-actions
-    = f.button :submit
+  = f.input :body, :label => false
+  = f.button :submit

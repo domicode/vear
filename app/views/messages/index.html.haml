@@ -2,4 +2,11 @@
   .span12
     = render 'users/user_navigation'
 
-= render :partial => 'messages/post_messages', :collection => @posts
+.row-fluid
+  .span12
+    %table.table
+      = render collection
+- if user_signed_in?
+  .row-fluid
+    .span12
+      = render 'form'

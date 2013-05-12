@@ -12,11 +12,14 @@ class MessagesController < InheritedResources::Base
     @message = post.messages.build(:post_id => post.id,
                                    :user_id => current_user.id,
                                    :body => params[:message][:body])
-    create! { ([@message.post, @message]) }
+    create! { post_messages_path(post) }
   end
 
   def index
-    @posts = Post.joins(:messages).uniq
+    post = Post.find(params[:post_id])
+    @message = post.messages.build(:post_id => post.id,
+                                   :user_id => current_user.id)
+    @messages = post.messages
   end
 
   def build_new_post
