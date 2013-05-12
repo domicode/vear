@@ -15,9 +15,6 @@ class PostsController < InheritedResources::Base
   end
 
   def create
-    create! do |success, failure|
-      success.html { redirect_to root_url}
-      failure.html { redirect_to root_url }
-    end
+    create! { root_path }
   end
 end
