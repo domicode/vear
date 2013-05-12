@@ -1,9 +1,0 @@
-- if user_signed_in?
-  = render 'users/user_navigation'
-.row-fluid
-  #posts.span12
-    = render :partial => 'posts/post', :collection => @posts
-
-.row-fluid
-  #paginator
-    = paginate @posts

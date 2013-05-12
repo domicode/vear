@@ -1,0 +1,9 @@
+= render 'users/user_navigation'
+
+.row-fluid
+  #posts.span12
+    = render @posts
+
+.row-fluid
+  #paginator
+    = paginate @posts
