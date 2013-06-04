@@ -3,7 +3,9 @@ Vear::Application.routes.draw do
 
   get :search, :controller => 'search'
 
-  resources :users
+  resources :users do
+    get :posts
+  end
 
   resources :posts do
     resources :messages

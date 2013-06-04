@@ -1,0 +1,10 @@
+= render 'users/user_navigation'
+
+- @posts.each do |post|
+  .row-fluid
+    .span3
+      = render :partial => 'posts/post', :object => post
+    .span9
+      %table.table
+        = render :partial => 'message', :collection => post.messages
+        = render 'messages/form', :message => post.messages.build

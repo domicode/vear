@@ -1,12 +1,8 @@
 .row-fluid
-  .span12
-    = render 'users/user_navigation'
-
-.row-fluid
-  .span12
+  .span3
+    = render @post
+  .span9
     %table.table
       = render collection
-- if user_signed_in?
-  .row-fluid
-    .span12
-      = render 'form'
+    - if user_signed_in?
+      = render 'form', :message => @message

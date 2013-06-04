@@ -1,0 +1,6 @@
+.row-fluid
+  .span3
+    = render :partial => 'posts/post', :collection => @posts
+  .span9
+    %table.table
+      = render :partial => 'messages/message', :collection => @posts.messages

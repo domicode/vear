@@ -1,6 +1,8 @@
 class MessagesController < InheritedResources::Base
   before_filter :authenticate_user!, :build_new_post
 
+  has_scope :order_asc
+
   def new
     post = Post.find(params[:post_id])
     @message = post.messages.build(:post_id => post.id,
@@ -16,10 +18,10 @@ class MessagesController < InheritedResources::Base
   end
 
   def index
-    post = Post.find(params[:post_id])
-    @message = post.messages.build(:post_id => post.id,
+    @post = Post.find(params[:post_id])
+    @message = @post.messages.build(:post_id => @post.id,
                                    :user_id => current_user.id)
-    @messages = post.messages
+    @messages = @post.messages
   end
 
   def build_new_post
